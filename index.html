@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f3f4f6;
+        }
+
+        .scene {
+            display: none;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .scene.active {
+            display: flex;
+        }
+
+        .intro {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #f8a1d1;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .cake {
+            width: 500px;
+            height: 500px;
+            background: url('https://gcs.tripi.vn/public-tripi/tripi-feed/img/473957VrP/hinh-anh-dong-chuc-sinh-nhat-5.gif') no-repeat center center;
+            background-size: contain;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .candles {
+            width: 500px;
+            height: 500px;
+            background: url('https://gcs.tripi.vn/public-tripi/tripi-feed/img/473957xiT/hinh-anh-dong-chuc-sinh-nhat-9.gif') no-repeat center center;
+            background-size: contain;
+            animation: flicker 1s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+        }
+
+        .message {
+            font-size: 1.5em;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scene 1: Introduction -->
+    <div class="scene scene-1 active">
+        <div class="intro">
+            <p>chúc mừng sinh nhật bạn đáng yêu nhéeeeeee</p>
+            <button class="btn" onclick="showScene(2)">nhấn vào đây nào bạn uiii:3</button>
+        </div>
+    </div>
+
+    <!-- Scene 2: Birthday Cake -->
+    <div class="scene scene-2">
+        <div>
+            <div class="cake"></div>
+            <div class="message">Chúc mừng sinh nhật bạn nhaaaa</div>
+            <button class="btn" onclick="showScene(3)">Tiếpppp</button>
+        </div>
+    </div>
+
+    <!-- Scene 3: Candles Lit -->
+    <div class="scene scene-3">
+        <div>
+            <div class="candles"></div>
+            <div class="message">Chúc bạn đằng ấy thật là đáng yêu vui vẻ trong ngày sinh nhật nhaaa:3</div>
+        </div>
+    </div>
+
+    <script>
+        function showScene(sceneNumber) {
+            // Hide all scenes
+            const scenes = document.querySelectorAll('.scene');
+            scenes.forEach(scene => {
+                scene.classList.remove('active');
+            });
+
+            // Show the desired scene
+            const activeScene = document.querySelector(`.scene-${sceneNumber}`);
+            activeScene.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
